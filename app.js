@@ -13,6 +13,7 @@ const MongoStore = require("connect-mongo");
 
 const flash = require("connect-flash");
 const app = express();
+const port = process.env.PORT;
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
@@ -101,6 +102,6 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
 });
 
-app.listen(8080, () => {
-  console.log("app is listening to port 8080");
+app.listen(port, () => {
+  console.log(`app is listening to port ${port}`);
 });
