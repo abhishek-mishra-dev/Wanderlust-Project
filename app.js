@@ -10,6 +10,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
+const cors = require("cors"); // Add this line
 
 const flash = require("connect-flash");
 const app = express();
@@ -27,6 +28,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+
+app.use(
+  cors({
+    origin: "https://wanderlust-ehk0.onrender.com",
+  })
+);
 
 const dbUrl = process.env.ATLASDB_URL;
 
